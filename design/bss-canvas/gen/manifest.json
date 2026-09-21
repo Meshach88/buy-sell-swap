@@ -1,0 +1,266 @@
+[
+ {
+  "file": "Main",
+  "w": 1280
+ },
+ {
+  "file": "ScreenMap",
+  "w": 1280
+ },
+ {
+  "file": "McHome",
+  "w": 390
+ },
+ {
+  "file": "McSearch",
+  "w": 390
+ },
+ {
+  "file": "McFilters",
+  "w": 390
+ },
+ {
+  "file": "McListing",
+  "w": 390
+ },
+ {
+  "file": "McStore",
+  "w": 390
+ },
+ {
+  "file": "McCart",
+  "w": 390
+ },
+ {
+  "file": "McCheckout",
+  "w": 390
+ },
+ {
+  "file": "McPay",
+  "w": 390
+ },
+ {
+  "file": "McPlaced",
+  "w": 390
+ },
+ {
+  "file": "McOrders",
+  "w": 390
+ },
+ {
+  "file": "McTrack",
+  "w": 390
+ },
+ {
+  "file": "McProblem",
+  "w": 390
+ },
+ {
+  "file": "McReview",
+  "w": 390
+ },
+ {
+  "file": "McAccount",
+  "w": 390
+ },
+ {
+  "file": "McSaved",
+  "w": 390
+ },
+ {
+  "file": "McSignIn",
+  "w": 390
+ },
+ {
+  "file": "McOtp",
+  "w": 390
+ },
+ {
+  "file": "McAlerts",
+  "w": 390
+ },
+ {
+  "file": "MsKyc",
+  "w": 390
+ },
+ {
+  "file": "MsStatus",
+  "w": 390
+ },
+ {
+  "file": "MsHome",
+  "w": 390
+ },
+ {
+  "file": "MsStock",
+  "w": 390
+ },
+ {
+  "file": "MsNew1",
+  "w": 390
+ },
+ {
+  "file": "MsNew2",
+  "w": 390
+ },
+ {
+  "file": "MsNew3",
+  "w": 390
+ },
+ {
+  "file": "MsNew4",
+  "w": 390
+ },
+ {
+  "file": "MsOrders",
+  "w": 390
+ },
+ {
+  "file": "MsOrder",
+  "w": 390
+ },
+ {
+  "file": "MsEarnings",
+  "w": 390
+ },
+ {
+  "file": "WcHome",
+  "w": 1440
+ },
+ {
+  "file": "WcSearch",
+  "w": 1440
+ },
+ {
+  "file": "WcListing",
+  "w": 1440
+ },
+ {
+  "file": "WcCart",
+  "w": 1440
+ },
+ {
+  "file": "WcCheckout",
+  "w": 1440
+ },
+ {
+  "file": "WcOrders",
+  "w": 1440
+ },
+ {
+  "file": "WcTrack",
+  "w": 1440
+ },
+ {
+  "file": "WcStore",
+  "w": 1440
+ },
+ {
+  "file": "WsOnboarding",
+  "w": 1440
+ },
+ {
+  "file": "WsOverview",
+  "w": 1440
+ },
+ {
+  "file": "WsInventory",
+  "w": 1440
+ },
+ {
+  "file": "WsNewListing",
+  "w": 1440
+ },
+ {
+  "file": "WsOrders",
+  "w": 1440
+ },
+ {
+  "file": "WsOrder",
+  "w": 1440
+ },
+ {
+  "file": "WsEarnings",
+  "w": 1440
+ },
+ {
+  "file": "WsReviews",
+  "w": 1440
+ },
+ {
+  "file": "WsVerification",
+  "w": 1440
+ },
+ {
+  "file": "WsProfile",
+  "w": 1440
+ },
+ {
+  "file": "WaOverview",
+  "w": 1440
+ },
+ {
+  "file": "WaSellers",
+  "w": 1440
+ },
+ {
+  "file": "WaSellerReview",
+  "w": 1440
+ },
+ {
+  "file": "WaListings",
+  "w": 1440
+ },
+ {
+  "file": "WaCatalogue",
+  "w": 1440
+ },
+ {
+  "file": "WaVerification",
+  "w": 1440
+ },
+ {
+  "file": "WaInspection",
+  "w": 1440
+ },
+ {
+  "file": "WaOrders",
+  "w": 1440
+ },
+ {
+  "file": "WaPayments",
+  "w": 1440
+ },
+ {
+  "file": "WaSettlements",
+  "w": 1440
+ },
+ {
+  "file": "WaReturns",
+  "w": 1440
+ },
+ {
+  "file": "WaDisputes",
+  "w": 1440
+ },
+ {
+  "file": "WaCustomers",
+  "w": 1440
+ },
+ {
+  "file": "WaInventory",
+  "w": 1440
+ },
+ {
+  "file": "WaLogistics",
+  "w": 1440
+ },
+ {
+  "file": "WaPromotions",
+  "w": 1440
+ },
+ {
+  "file": "WaReports",
+  "w": 1440
+ }
+]

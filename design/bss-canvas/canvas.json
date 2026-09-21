@@ -1,0 +1,1028 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Main.dc.html": {
+      "h": 2703,
+      "page": "brand",
+      "title": "Brand and system",
+      "w": 1280,
+      "x": 0,
+      "y": 0
+    },
+    "McAccount.dc.html": {
+      "h": 1008,
+      "page": "m-customer",
+      "title": "Account",
+      "w": 390,
+      "x": 480,
+      "y": 3558
+    },
+    "McAlerts.dc.html": {
+      "h": 852,
+      "page": "m-customer",
+      "title": "Notifications",
+      "w": 390,
+      "x": 1440,
+      "y": 3558
+    },
+    "McCart.dc.html": {
+      "h": 1004,
+      "page": "m-customer",
+      "title": "Cart",
+      "w": 390,
+      "x": 2400,
+      "y": 0
+    },
+    "McCheckout.dc.html": {
+      "h": 1084,
+      "page": "m-customer",
+      "title": "Checkout",
+      "w": 390,
+      "x": 0,
+      "y": 2054
+    },
+    "McFilters.dc.html": {
+      "h": 997,
+      "page": "m-customer",
+      "title": "Filters",
+      "w": 390,
+      "x": 960,
+      "y": 0
+    },
+    "McHome.dc.html": {
+      "h": 1436,
+      "page": "m-customer",
+      "title": "Home",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    "McListing.dc.html": {
+      "h": 1634,
+      "page": "m-customer",
+      "title": "Listing detail",
+      "w": 390,
+      "x": 1440,
+      "y": 0
+    },
+    "McOrders.dc.html": {
+      "h": 906,
+      "page": "m-customer",
+      "title": "My orders",
+      "w": 390,
+      "x": 1440,
+      "y": 2054
+    },
+    "McOtp.dc.html": {
+      "x": 2880,
+      "y": 0,
+      "w": 390,
+      "h": 852,
+      "title": "Enter code",
+      "page": "m-start"
+    },
+    "McPay.dc.html": {
+      "h": 852,
+      "page": "m-customer",
+      "title": "Pay by transfer",
+      "w": 390,
+      "x": 480,
+      "y": 2054
+    },
+    "McPlaced.dc.html": {
+      "h": 852,
+      "page": "m-customer",
+      "title": "Order placed",
+      "w": 390,
+      "x": 960,
+      "y": 2054
+    },
+    "McProblem.dc.html": {
+      "h": 1008,
+      "page": "m-customer",
+      "title": "Report a problem",
+      "w": 390,
+      "x": 2400,
+      "y": 2054
+    },
+    "McReview.dc.html": {
+      "h": 852,
+      "page": "m-customer",
+      "title": "Write a review",
+      "w": 390,
+      "x": 0,
+      "y": 3558
+    },
+    "McSaved.dc.html": {
+      "h": 899,
+      "page": "m-customer",
+      "title": "Saved",
+      "w": 390,
+      "x": 960,
+      "y": 3558
+    },
+    "McSearch.dc.html": {
+      "h": 1064,
+      "page": "m-customer",
+      "title": "Search results",
+      "w": 390,
+      "x": 480,
+      "y": 0
+    },
+    "McSignIn.dc.html": {
+      "x": 2400,
+      "y": 0,
+      "w": 390,
+      "h": 852,
+      "title": "Log in",
+      "page": "m-start"
+    },
+    "McStore.dc.html": {
+      "h": 1062,
+      "page": "m-customer",
+      "title": "Seller storefront",
+      "w": 390,
+      "x": 1920,
+      "y": 0
+    },
+    "McTrack.dc.html": {
+      "h": 988,
+      "page": "m-customer",
+      "title": "Order tracking",
+      "w": 390,
+      "x": 1920,
+      "y": 2054
+    },
+    "MsEarnings.dc.html": {
+      "h": 852,
+      "page": "m-seller",
+      "title": "Earnings",
+      "w": 390,
+      "x": 1920,
+      "y": 1437
+    },
+    "MsHome.dc.html": {
+      "h": 950,
+      "page": "m-seller",
+      "title": "Seller home",
+      "w": 390,
+      "x": 960,
+      "y": 0
+    },
+    "MsKyc.dc.html": {
+      "h": 852,
+      "page": "m-seller",
+      "title": "Verify your identity",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    "MsNew1.dc.html": {
+      "h": 852,
+      "page": "m-seller",
+      "title": "New listing 1: model",
+      "w": 390,
+      "x": 1920,
+      "y": 0
+    },
+    "MsNew2.dc.html": {
+      "h": 1017,
+      "page": "m-seller",
+      "title": "New listing 2: details",
+      "w": 390,
+      "x": 2400,
+      "y": 0
+    },
+    "MsNew3.dc.html": {
+      "h": 852,
+      "page": "m-seller",
+      "title": "New listing 3: photos",
+      "w": 390,
+      "x": 0,
+      "y": 1437
+    },
+    "MsNew4.dc.html": {
+      "h": 852,
+      "page": "m-seller",
+      "title": "New listing 4: price",
+      "w": 390,
+      "x": 480,
+      "y": 1437
+    },
+    "MsOrder.dc.html": {
+      "h": 1042,
+      "page": "m-seller",
+      "title": "Order detail",
+      "w": 390,
+      "x": 1440,
+      "y": 1437
+    },
+    "MsOrders.dc.html": {
+      "h": 852,
+      "page": "m-seller",
+      "title": "Orders",
+      "w": 390,
+      "x": 960,
+      "y": 1437
+    },
+    "MsStatus.dc.html": {
+      "h": 852,
+      "page": "m-seller",
+      "title": "Application status",
+      "w": 390,
+      "x": 480,
+      "y": 0
+    },
+    "MsStock.dc.html": {
+      "h": 852,
+      "page": "m-seller",
+      "title": "Inventory",
+      "w": 390,
+      "x": 1440,
+      "y": 0
+    },
+    "ScreenMap.dc.html": {
+      "h": 2065,
+      "page": "brand",
+      "title": "Screen map",
+      "w": 1280,
+      "x": 1400,
+      "y": 0
+    },
+    "WaCatalogue.dc.html": {
+      "h": 968,
+      "page": "w-admin",
+      "title": "Product catalogue",
+      "w": 1440,
+      "x": 1550,
+      "y": 1628
+    },
+    "WaCustomers.dc.html": {
+      "h": 968,
+      "page": "w-admin",
+      "title": "Customers",
+      "w": 1440,
+      "x": 0,
+      "y": 6172
+    },
+    "WaDisputes.dc.html": {
+      "h": 1108,
+      "page": "w-admin",
+      "title": "Disputes",
+      "w": 1440,
+      "x": 3100,
+      "y": 4644
+    },
+    "WaInspection.dc.html": {
+      "h": 1208,
+      "page": "w-admin",
+      "title": "Device inspection",
+      "w": 1440,
+      "x": 0,
+      "y": 3016
+    },
+    "WaInventory.dc.html": {
+      "h": 968,
+      "page": "w-admin",
+      "title": "BuySellSwap inventory",
+      "w": 1440,
+      "x": 1550,
+      "y": 6172
+    },
+    "WaListings.dc.html": {
+      "h": 968,
+      "page": "w-admin",
+      "title": "Listings",
+      "w": 1440,
+      "x": 0,
+      "y": 1628
+    },
+    "WaLogistics.dc.html": {
+      "h": 1108,
+      "page": "w-admin",
+      "title": "Logistics",
+      "w": 1440,
+      "x": 3100,
+      "y": 6172
+    },
+    "WaOrders.dc.html": {
+      "h": 968,
+      "page": "w-admin",
+      "title": "Orders",
+      "w": 1440,
+      "x": 1550,
+      "y": 3016
+    },
+    "WaOverview.dc.html": {
+      "h": 1108,
+      "page": "w-admin",
+      "title": "Overview",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "WaPayments.dc.html": {
+      "h": 968,
+      "page": "w-admin",
+      "title": "Payments",
+      "w": 1440,
+      "x": 3100,
+      "y": 3016
+    },
+    "WaPromotions.dc.html": {
+      "h": 1008,
+      "page": "w-admin",
+      "title": "Promotions",
+      "w": 1440,
+      "x": 0,
+      "y": 7700
+    },
+    "WaReports.dc.html": {
+      "h": 1108,
+      "page": "w-admin",
+      "title": "Reports and analytics",
+      "w": 1440,
+      "x": 1550,
+      "y": 7700
+    },
+    "WaReturns.dc.html": {
+      "h": 968,
+      "page": "w-admin",
+      "title": "Returns and refunds",
+      "w": 1440,
+      "x": 1550,
+      "y": 4644
+    },
+    "WaSellerReview.dc.html": {
+      "h": 1208,
+      "page": "w-admin",
+      "title": "Seller KYC review",
+      "w": 1440,
+      "x": 3100,
+      "y": 0
+    },
+    "WaSellers.dc.html": {
+      "h": 968,
+      "page": "w-admin",
+      "title": "Sellers",
+      "w": 1440,
+      "x": 1550,
+      "y": 0
+    },
+    "WaSettlements.dc.html": {
+      "h": 968,
+      "page": "w-admin",
+      "title": "Commissions and settlements",
+      "w": 1440,
+      "x": 0,
+      "y": 4644
+    },
+    "WaVerification.dc.html": {
+      "h": 968,
+      "page": "w-admin",
+      "title": "Verification queue",
+      "w": 1440,
+      "x": 3100,
+      "y": 1628
+    },
+    "WcCart.dc.html": {
+      "h": 1186,
+      "page": "w-customer",
+      "title": "Cart",
+      "w": 1440,
+      "x": 0,
+      "y": 4143
+    },
+    "WcCheckout.dc.html": {
+      "h": 1499,
+      "page": "w-customer",
+      "title": "Checkout",
+      "w": 1440,
+      "x": 1550,
+      "y": 4143
+    },
+    "WcHome.dc.html": {
+      "h": 3723,
+      "page": "w-customer",
+      "title": "Home",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "WcListing.dc.html": {
+      "h": 2440,
+      "page": "w-customer",
+      "title": "Listing detail",
+      "w": 1440,
+      "x": 3100,
+      "y": 0
+    },
+    "WcOrders.dc.html": {
+      "h": 1515,
+      "page": "w-customer",
+      "title": "My orders",
+      "w": 1440,
+      "x": 3100,
+      "y": 4143
+    },
+    "WcSearch.dc.html": {
+      "h": 1887,
+      "page": "w-customer",
+      "title": "Search results",
+      "w": 1440,
+      "x": 1550,
+      "y": 0
+    },
+    "WcStore.dc.html": {
+      "h": 1498,
+      "page": "w-customer",
+      "title": "Seller storefront",
+      "w": 1440,
+      "x": 1550,
+      "y": 6078
+    },
+    "WcTrack.dc.html": {
+      "h": 1208,
+      "page": "w-customer",
+      "title": "Order tracking",
+      "w": 1440,
+      "x": 0,
+      "y": 6078
+    },
+    "WsEarnings.dc.html": {
+      "h": 1208,
+      "page": "w-seller",
+      "title": "Earnings and settlements",
+      "w": 1440,
+      "x": 0,
+      "y": 3956
+    },
+    "WsInventory.dc.html": {
+      "h": 908,
+      "page": "w-seller",
+      "title": "Inventory",
+      "w": 1440,
+      "x": 3100,
+      "y": 0
+    },
+    "WsNewListing.dc.html": {
+      "h": 1908,
+      "page": "w-seller",
+      "title": "New listing",
+      "w": 1440,
+      "x": 0,
+      "y": 1628
+    },
+    "WsOnboarding.dc.html": {
+      "h": 908,
+      "page": "w-seller",
+      "title": "Seller registration",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "WsOrder.dc.html": {
+      "h": 1008,
+      "page": "w-seller",
+      "title": "Order detail",
+      "w": 1440,
+      "x": 3100,
+      "y": 1628
+    },
+    "WsOrders.dc.html": {
+      "h": 908,
+      "page": "w-seller",
+      "title": "Orders",
+      "w": 1440,
+      "x": 1550,
+      "y": 1628
+    },
+    "WsOverview.dc.html": {
+      "h": 1208,
+      "page": "w-seller",
+      "title": "Overview",
+      "w": 1440,
+      "x": 1550,
+      "y": 0
+    },
+    "WsProfile.dc.html": {
+      "h": 1008,
+      "page": "w-seller",
+      "title": "Store profile",
+      "w": 1440,
+      "x": 0,
+      "y": 5584
+    },
+    "WsReviews.dc.html": {
+      "h": 1108,
+      "page": "w-seller",
+      "title": "Reviews and performance",
+      "w": 1440,
+      "x": 1550,
+      "y": 3956
+    },
+    "WsVerification.dc.html": {
+      "h": 955,
+      "page": "w-seller",
+      "title": "Verification",
+      "w": 1440,
+      "x": 3100,
+      "y": 3956
+    },
+    "McSplash.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 852,
+      "title": "Splash",
+      "page": "m-start"
+    },
+    "McWelcome.dc.html": {
+      "x": 480,
+      "y": 0,
+      "w": 390,
+      "h": 852,
+      "title": "Welcome",
+      "page": "m-start"
+    },
+    "McSignup.dc.html": {
+      "x": 960,
+      "y": 0,
+      "w": 390,
+      "h": 852,
+      "title": "Sign up: account type",
+      "page": "m-start"
+    },
+    "McSignupBuyer.dc.html": {
+      "x": 1440,
+      "y": 0,
+      "w": 390,
+      "h": 852,
+      "title": "Sign up: buyer",
+      "page": "m-start"
+    },
+    "McSignupSeller.dc.html": {
+      "x": 1920,
+      "y": 0,
+      "w": 390,
+      "h": 952,
+      "title": "Sign up: seller",
+      "page": "m-start"
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-09-19T15:36:10Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "page": "brand",
+    "view": "canvas"
+  },
+  "notes": {
+    "t-brand-0": {
+      "kind": "title1",
+      "maxW": 2680,
+      "page": "brand",
+      "text": "Brand",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "t-m-customer-0": {
+      "kind": "title1",
+      "maxW": 2310,
+      "page": "m-customer",
+      "text": "Browse",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "t-m-customer-1": {
+      "kind": "title1",
+      "maxW": 390,
+      "page": "m-customer",
+      "text": "Buy",
+      "w": 240,
+      "x": 2400,
+      "y": -300
+    },
+    "t-m-customer-2": {
+      "kind": "title1",
+      "maxW": 1350,
+      "page": "m-customer",
+      "text": "Buy",
+      "w": 240,
+      "x": 0,
+      "y": 1754
+    },
+    "t-m-customer-3": {
+      "kind": "title1",
+      "maxW": 1350,
+      "page": "m-customer",
+      "text": "After purchase",
+      "w": 240,
+      "x": 1440,
+      "y": 1754
+    },
+    "t-m-customer-4": {
+      "kind": "title1",
+      "maxW": 390,
+      "page": "m-customer",
+      "text": "After purchase",
+      "w": 240,
+      "x": 0,
+      "y": 3258
+    },
+    "t-m-customer-5": {
+      "kind": "title1",
+      "maxW": 1350,
+      "page": "m-customer",
+      "text": "Account",
+      "w": 240,
+      "x": 480,
+      "y": 3258
+    },
+    "t-m-seller-0": {
+      "kind": "title1",
+      "maxW": 870,
+      "page": "m-seller",
+      "text": "Onboarding",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "t-m-seller-1": {
+      "kind": "title1",
+      "maxW": 870,
+      "page": "m-seller",
+      "text": "Daily",
+      "w": 240,
+      "x": 960,
+      "y": -300
+    },
+    "t-m-seller-2": {
+      "kind": "title1",
+      "maxW": 870,
+      "page": "m-seller",
+      "text": "Add a listing",
+      "w": 240,
+      "x": 1920,
+      "y": -300
+    },
+    "t-m-seller-3": {
+      "kind": "title1",
+      "maxW": 870,
+      "page": "m-seller",
+      "text": "Add a listing",
+      "w": 240,
+      "x": 0,
+      "y": 1137
+    },
+    "t-m-seller-4": {
+      "kind": "title1",
+      "maxW": 870,
+      "page": "m-seller",
+      "text": "Fulfil",
+      "w": 240,
+      "x": 960,
+      "y": 1137
+    },
+    "t-m-seller-5": {
+      "kind": "title1",
+      "maxW": 390,
+      "page": "m-seller",
+      "text": "Money",
+      "w": 240,
+      "x": 1920,
+      "y": 1137
+    },
+    "t-w-admin-0": {
+      "kind": "title1",
+      "maxW": 4540,
+      "page": "w-admin",
+      "text": "Marketplace",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "t-w-admin-1": {
+      "kind": "title1",
+      "maxW": 2990,
+      "page": "w-admin",
+      "text": "Marketplace",
+      "w": 240,
+      "x": 0,
+      "y": 1328
+    },
+    "t-w-admin-2": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "w-admin",
+      "text": "Trust",
+      "w": 240,
+      "x": 3100,
+      "y": 1328
+    },
+    "t-w-admin-3": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "w-admin",
+      "text": "Trust",
+      "w": 240,
+      "x": 0,
+      "y": 2716
+    },
+    "t-w-admin-4": {
+      "kind": "title1",
+      "maxW": 2990,
+      "page": "w-admin",
+      "text": "Money",
+      "w": 240,
+      "x": 1550,
+      "y": 2716
+    },
+    "t-w-admin-5": {
+      "kind": "title1",
+      "maxW": 4540,
+      "page": "w-admin",
+      "text": "Money",
+      "w": 240,
+      "x": 0,
+      "y": 4344
+    },
+    "t-w-admin-6": {
+      "kind": "title1",
+      "maxW": 4540,
+      "page": "w-admin",
+      "text": "Operations",
+      "w": 240,
+      "x": 0,
+      "y": 5872
+    },
+    "t-w-admin-7": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "w-admin",
+      "text": "Operations",
+      "w": 240,
+      "x": 0,
+      "y": 7400
+    },
+    "t-w-admin-8": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "w-admin",
+      "text": "Insights",
+      "w": 240,
+      "x": 1550,
+      "y": 7400
+    },
+    "t-w-customer-0": {
+      "kind": "title1",
+      "maxW": 4540,
+      "page": "w-customer",
+      "text": "Browse",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "t-w-customer-1": {
+      "kind": "title1",
+      "maxW": 2990,
+      "page": "w-customer",
+      "text": "Buy",
+      "w": 240,
+      "x": 0,
+      "y": 3843
+    },
+    "t-w-customer-2": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "w-customer",
+      "text": "After purchase",
+      "w": 240,
+      "x": 3100,
+      "y": 3843
+    },
+    "t-w-customer-3": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "w-customer",
+      "text": "After purchase",
+      "w": 240,
+      "x": 0,
+      "y": 5778
+    },
+    "t-w-customer-4": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "w-customer",
+      "text": "Browse",
+      "w": 240,
+      "x": 1550,
+      "y": 5778
+    },
+    "t-w-seller-0": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "w-seller",
+      "text": "Onboarding",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "t-w-seller-1": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "w-seller",
+      "text": "Daily",
+      "w": 240,
+      "x": 1550,
+      "y": -300
+    },
+    "t-w-seller-2": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "w-seller",
+      "text": "Listings",
+      "w": 240,
+      "x": 3100,
+      "y": -300
+    },
+    "t-w-seller-3": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "w-seller",
+      "text": "Listings",
+      "w": 240,
+      "x": 0,
+      "y": 1328
+    },
+    "t-w-seller-4": {
+      "kind": "title1",
+      "maxW": 2990,
+      "page": "w-seller",
+      "text": "Fulfil",
+      "w": 240,
+      "x": 1550,
+      "y": 1328
+    },
+    "t-w-seller-5": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "w-seller",
+      "text": "Money",
+      "w": 240,
+      "x": 0,
+      "y": 3656
+    },
+    "t-w-seller-6": {
+      "kind": "title1",
+      "maxW": 2990,
+      "page": "w-seller",
+      "text": "Trust",
+      "w": 240,
+      "x": 1550,
+      "y": 3656
+    },
+    "t-w-seller-7": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "w-seller",
+      "text": "Settings",
+      "w": 240,
+      "x": 0,
+      "y": 5284
+    },
+    "t-m-start-0": {
+      "x": 0,
+      "y": -300,
+      "text": "Launch",
+      "kind": "title1",
+      "maxW": 870,
+      "page": "m-start"
+    },
+    "t-m-start-1": {
+      "x": 960,
+      "y": -300,
+      "text": "Sign up",
+      "kind": "title1",
+      "maxW": 1350,
+      "page": "m-start"
+    },
+    "t-m-start-2": {
+      "x": 2400,
+      "y": -300,
+      "text": "Log in",
+      "kind": "title1",
+      "maxW": 870,
+      "page": "m-start"
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "ScreenMap.dc.html",
+    "McHome.dc.html",
+    "McSearch.dc.html",
+    "McFilters.dc.html",
+    "McListing.dc.html",
+    "McStore.dc.html",
+    "McCart.dc.html",
+    "McCheckout.dc.html",
+    "McPay.dc.html",
+    "McPlaced.dc.html",
+    "McOrders.dc.html",
+    "McTrack.dc.html",
+    "McProblem.dc.html",
+    "McReview.dc.html",
+    "McAccount.dc.html",
+    "McSaved.dc.html",
+    "McSignIn.dc.html",
+    "McOtp.dc.html",
+    "McAlerts.dc.html",
+    "MsKyc.dc.html",
+    "MsStatus.dc.html",
+    "MsHome.dc.html",
+    "MsStock.dc.html",
+    "MsNew1.dc.html",
+    "MsNew2.dc.html",
+    "MsNew3.dc.html",
+    "MsNew4.dc.html",
+    "MsOrders.dc.html",
+    "MsOrder.dc.html",
+    "MsEarnings.dc.html",
+    "WcHome.dc.html",
+    "WcSearch.dc.html",
+    "WcListing.dc.html",
+    "WcCart.dc.html",
+    "WcCheckout.dc.html",
+    "WcOrders.dc.html",
+    "WcTrack.dc.html",
+    "WcStore.dc.html",
+    "WsOnboarding.dc.html",
+    "WsOverview.dc.html",
+    "WsInventory.dc.html",
+    "WsNewListing.dc.html",
+    "WsOrders.dc.html",
+    "WsOrder.dc.html",
+    "WsEarnings.dc.html",
+    "WsReviews.dc.html",
+    "WsVerification.dc.html",
+    "WsProfile.dc.html",
+    "WaOverview.dc.html",
+    "WaSellers.dc.html",
+    "WaSellerReview.dc.html",
+    "WaListings.dc.html",
+    "WaCatalogue.dc.html",
+    "WaVerification.dc.html",
+    "WaInspection.dc.html",
+    "WaOrders.dc.html",
+    "WaPayments.dc.html",
+    "WaSettlements.dc.html",
+    "WaReturns.dc.html",
+    "WaDisputes.dc.html",
+    "WaCustomers.dc.html",
+    "WaInventory.dc.html",
+    "WaLogistics.dc.html",
+    "WaPromotions.dc.html",
+    "WaReports.dc.html",
+    "McSplash.dc.html",
+    "McWelcome.dc.html",
+    "McSignup.dc.html",
+    "McSignupBuyer.dc.html",
+    "McSignupSeller.dc.html"
+  ],
+  "pages": [
+    {
+      "id": "brand",
+      "name": "Brand"
+    },
+    {
+      "id": "m-start",
+      "name": "Mobile · Start"
+    },
+    {
+      "id": "m-customer",
+      "name": "Mobile · Customer"
+    },
+    {
+      "id": "m-seller",
+      "name": "Mobile · Seller"
+    },
+    {
+      "id": "w-customer",
+      "name": "Web · Customer"
+    },
+    {
+      "id": "w-seller",
+      "name": "Web · Seller"
+    },
+    {
+      "id": "w-admin",
+      "name": "Web · Admin"
+    }
+  ],
+  "title": "BuySellSwap App Screens"
+}
