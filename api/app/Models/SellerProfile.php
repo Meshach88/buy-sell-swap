@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Enums\KycStatus;
+use Database\Factories\SellerProfileFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,6 +19,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 #[Hidden(['id_number', 'id_document_path', 'selfie_path', 'bank_account_number'])]
 class SellerProfile extends Model
 {
+    /** @use HasFactory<SellerProfileFactory> */
+    use HasFactory;
+
     protected function casts(): array
     {
         return [

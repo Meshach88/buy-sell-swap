@@ -55,4 +55,13 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+
+    /** Indicate that the phone has not been OTP-verified yet (the state right after registration). */
+    public function unverifiedPhone(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'phone_verified_at' => null,
+            'status' => 'pending',
+        ]);
+    }
 }

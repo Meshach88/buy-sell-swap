@@ -5,22 +5,27 @@ namespace App\Models;
 use App\Enums\Condition;
 use App\Enums\ListingStatus;
 use App\Enums\VerificationStatus;
+use Database\Factories\ListingFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+// status/verification_status/published_at are here too: only ever set from controller-built
+// arrays or validated() data (never raw request input), so mass assignment is safe.
 #[Fillable([
     'seller_profile_id', 'product_model_id', 'inventory_location_id', 'city_id', 'title', 'variant', 'condition',
     'battery_health', 'imei', 'description', 'price_kobo', 'was_price_kobo', 'quantity', 'warranty_months',
-    'warranty_note', 'open_to_swap',
+    'warranty_note', 'open_to_swap', 'status', 'verification_status', 'published_at',
 ])]
 #[Hidden(['imei', 'imei_hash'])]
 class Listing extends Model
 {
-    use SoftDeletes;
+    /** @use HasFactory<ListingFactory> */
+    use HasFactory, SoftDeletes;
 
     protected function casts(): array
     {

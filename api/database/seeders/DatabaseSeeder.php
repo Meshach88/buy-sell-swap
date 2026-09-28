@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             CommissionTierSeeder::class,
             DeliveryZoneSeeder::class,
             CategorySeeder::class,
+            ProductModelSeeder::class,
             AdminUserSeeder::class,
         ]);
     }
