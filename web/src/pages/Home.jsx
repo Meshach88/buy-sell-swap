@@ -1,8 +1,11 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 import { api } from '../lib/api.js';
+import { useAuth } from '../lib/auth.jsx';
 import { Badge } from '../components/ui/core/Badge.jsx';
 import { Card } from '../components/ui/core/Card.jsx';
+import { Button } from '../components/ui/core/Button.jsx';
 
 function useHealth() {
   return useQuery({ queryKey: ['health'], queryFn: () => api('/health') });
@@ -10,6 +13,8 @@ function useHealth() {
 
 export function Home() {
   const { data, isPending, isError } = useHealth();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -32,6 +37,26 @@ export function Home() {
             </div>
             {isPending ? <Badge>Checking API…</Badge> : isError ? <Badge tone="danger">API offline</Badge> : <Badge tone={data.database === 'ok' ? 'verified' : 'pending'}>API and database {data.database}</Badge>}
           </div>
+        </Card>
+
+        <Card padding="md" style={{ marginTop: 'var(--space-4)' }}>
+          {user ? (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-4)' }}>
+              <div style={{ display: 'grid', gap: 2 }}>
+                <span style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--text-strong)' }}>Welcome back, {user.name.split(' ')[0]}</span>
+                <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)' }}>{user.roles.includes('seller') ? user.seller?.shop_name : 'Buyer account'}</span>
+              </div>
+              <Button variant="ghost" onClick={logout}>Log out</Button>
+            </div>
+          ) : (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-4)' }}>
+              <div style={{ display: 'grid', gap: 2 }}>
+                <span style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--text-strong)' }}>New here?</span>
+                <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)' }}>Create an account to buy or start selling.</span>
+              </div>
+              <Button onClick={() => navigate('/welcome')}>Get started</Button>
+            </div>
+          )}
         </Card>
       </div>
     </>

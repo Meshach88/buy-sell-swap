@@ -6,6 +6,7 @@ import '@fontsource-variable/sora';
 import '@fontsource-variable/lexend'; // supplies the ₦ glyph Sora lacks
 import './styles/index.css';
 import { App } from './app/App.jsx';
+import { AuthProvider } from './lib/auth.jsx';
 
 const queryClient = new QueryClient({ defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } } });
 
@@ -13,7 +14,9 @@ createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </BrowserRouter>
     </QueryClientProvider>
   </React.StrictMode>,

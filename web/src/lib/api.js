@@ -30,6 +30,7 @@ export class ApiError extends Error {
     super(body?.message ?? `Request failed (${status})`);
     this.status = status;
     this.errors = body?.errors ?? null;
+    this.body = body;
   }
 }
 

@@ -2,12 +2,15 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { App } from './App.jsx';
+import { AuthProvider } from '../lib/auth.jsx';
 
 function renderAt(path) {
   const client = new QueryClient({ defaultOptions: { queries: { retry: false } } });
   return render(
     <QueryClientProvider client={client}>
-      <MemoryRouter initialEntries={[path]}><App /></MemoryRouter>
+      <MemoryRouter initialEntries={[path]}>
+        <AuthProvider><App /></AuthProvider>
+      </MemoryRouter>
     </QueryClientProvider>,
   );
 }
