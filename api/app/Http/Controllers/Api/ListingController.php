@@ -30,6 +30,7 @@ class ListingController extends Controller
             ->when($request->filled('condition'), fn ($q) => $q->where('condition', $request->string('condition')))
             ->when($request->filled('seller_profile_id'), fn ($q) => $q->where('seller_profile_id', $request->integer('seller_profile_id')))
             ->when($request->boolean('open_to_swap'), fn ($q) => $q->where('open_to_swap', true))
+            ->when($request->boolean('verified'), fn ($q) => $q->whereHas('seller', fn ($q) => $q->whereNotNull('verified_at')))
             ->when($request->filled('min_price_kobo'), fn ($q) => $q->where('price_kobo', '>=', $request->integer('min_price_kobo')))
             ->when($request->filled('max_price_kobo'), fn ($q) => $q->where('price_kobo', '<=', $request->integer('max_price_kobo')))
             ->orderBy(...$this->sort($request))

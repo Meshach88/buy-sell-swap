@@ -3,27 +3,39 @@ import { MemoryRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { App } from './App.jsx';
 import { AuthProvider } from '../lib/auth.jsx';
+import { ToastProvider } from '../lib/toast.jsx';
 
 function renderAt(path) {
   const client = new QueryClient({ defaultOptions: { queries: { retry: false } } });
   return render(
     <QueryClientProvider client={client}>
       <MemoryRouter initialEntries={[path]}>
-        <AuthProvider><App /></AuthProvider>
+        <ToastProvider><AuthProvider><App /></AuthProvider></ToastProvider>
       </MemoryRouter>
     </QueryClientProvider>,
   );
 }
 
+function jsonResponse(body) {
+  return Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve(body) });
+}
+
 describe('App', () => {
   beforeEach(() => {
-    globalThis.fetch = vi.fn(() => Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve({ app: 'BuySellSwap', database: 'ok' }) }));
+    localStorage.clear();
+    globalThis.fetch = vi.fn((url) => {
+      if (url.includes('/categories')) return jsonResponse({ data: [] });
+      if (url.includes('/listings')) return jsonResponse({ data: [], meta: { total: 0 } });
+      return jsonResponse({});
+    });
   });
 
-  it('shows the API status on the home page', async () => {
+  it('shows the marketplace home page', async () => {
     renderAt('/');
-    expect(await screen.findByText(/API and database ok/i)).toBeInTheDocument();
+    expect(await screen.findByText('Fresh in Kaduna')).toBeInTheDocument();
     expect(screen.getAllByText('BuySellSwap').length).toBeGreaterThan(0);
+    // Appears twice by design: the header CTA and the seller-conversion section.
+    expect(screen.getAllByRole('button', { name: /start selling/i }).length).toBeGreaterThan(0);
   });
 
   it('renders the design system page', () => {

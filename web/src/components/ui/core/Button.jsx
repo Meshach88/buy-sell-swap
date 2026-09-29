@@ -24,22 +24,37 @@ function skin(variant, state) {
   }
 }
 
-export function Button({ variant = 'primary', size = 'md', children, icon, iconRight, fullWidth = false, disabled = false, type = 'button', onClick }) {
+function Spinner({ size = 16, color = 'currentColor' }) {
+  return (
+    <span style={{
+      width: size, height: size, borderRadius: '50%', flex: '0 0 auto',
+      border: `2px solid ${color}`, borderTopColor: 'transparent', opacity: 0.9,
+      animation: 'spin .6s linear infinite',
+    }} />
+  );
+}
+
+export function Button({ variant = 'primary', size = 'md', children, icon, iconRight, fullWidth = false, disabled = false, loading = false, type = 'button', onClick }) {
   const [state, setState] = React.useState('rest');
+  const isDisabled = disabled || loading;
   const style = {
     display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 'var(--space-2)',
     height: HEIGHT[size], padding: PAD[size], fontFamily: 'var(--font-sans)', fontSize: FONT[size],
     fontWeight: 'var(--weight-semibold)', letterSpacing: '-0.01em', borderRadius: 'var(--radius-control)',
-    cursor: disabled ? 'not-allowed' : 'pointer', width: fullWidth ? '100%' : undefined,
-    opacity: disabled ? 0.45 : 1, transition: 'var(--transition-control)',
+    cursor: isDisabled ? 'not-allowed' : 'pointer', width: fullWidth ? '100%' : undefined,
+    opacity: disabled && !loading ? 0.45 : 1, transition: 'var(--transition-control), opacity var(--dur-fast) var(--ease-out)',
     transform: state === 'press' ? 'scale(var(--press-scale))' : 'none', whiteSpace: 'nowrap',
-    ...skin(variant, disabled ? 'rest' : state),
+    ...skin(variant, isDisabled ? 'rest' : state),
   };
+  const spinnerColor = variant === 'primary' || variant === 'inverse' || variant === 'danger'
+    ? 'rgba(255,255,255,.85)'
+    : variant === 'accent' ? 'rgba(7,10,24,.6)' : 'var(--brand-primary)';
+
   return (
-    <button type={type} disabled={disabled} onClick={onClick} style={style}
-      onMouseEnter={() => !disabled && setState('hover')} onMouseLeave={() => setState('rest')}
-      onMouseDown={() => !disabled && setState('press')} onMouseUp={() => !disabled && setState('hover')}>
-      {icon}{children}{iconRight}
+    <button type={type} disabled={isDisabled} onClick={onClick} style={style} aria-busy={loading || undefined}
+      onMouseEnter={() => !isDisabled && setState('hover')} onMouseLeave={() => setState('rest')}
+      onMouseDown={() => !isDisabled && setState('press')} onMouseUp={() => !isDisabled && setState('hover')}>
+      {loading ? <Spinner color={spinnerColor} /> : icon}{children}{!loading ? iconRight : null}
     </button>
   );
 }

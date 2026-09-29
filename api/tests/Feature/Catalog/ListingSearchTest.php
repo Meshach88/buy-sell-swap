@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\Listing;
 use App\Models\ProductModel;
+use App\Models\SellerProfile;
 use Database\Seeders\RoleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -62,6 +63,15 @@ class ListingSearchTest extends TestCase
         $this->getJson("/api/listings?category_id={$phones->id}")->assertOk()->assertJsonCount(1, 'data');
         $this->getJson('/api/listings?condition=ng_used')->assertOk()->assertJsonCount(1, 'data');
         $this->getJson('/api/listings?min_price_kobo=50000000')->assertOk()->assertJsonCount(1, 'data');
+    }
+
+    public function test_verified_filter_only_returns_verified_sellers_listings(): void
+    {
+        $verifiedSeller = SellerProfile::factory()->verified()->create();
+        Listing::factory()->live()->create(['seller_profile_id' => $verifiedSeller->id]);
+        Listing::factory()->live()->create(); // unverified seller
+
+        $this->getJson('/api/listings?verified=1')->assertOk()->assertJsonCount(1, 'data');
     }
 
     public function test_show_returns_404_for_a_non_live_listing(): void

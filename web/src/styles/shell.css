@@ -14,6 +14,15 @@
 .app-nav-top a { font-size: 14px; font-weight: 500; color: var(--text-body); }
 .app-nav-top a[aria-current='page'] { color: var(--brand-primary); }
 
+.app-header-actions { display: none; align-items: center; gap: var(--space-3); flex: 0 0 auto; margin-left: auto; }
+.app-header-loginlink {
+  all: unset; cursor: pointer; height: 34px; padding: 0 14px; display: inline-flex; align-items: center;
+  border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; color: var(--text-body);
+  transition: var(--transition-control);
+}
+.app-header-loginlink:hover { background: var(--ink-100); }
+.app-header-greeting { font-size: 13px; font-weight: 600; color: var(--text-body); white-space: nowrap; }
+
 .app-main { flex: 1; padding-bottom: 88px; }
 .page { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: var(--space-6) var(--gutter-mobile); }
 
@@ -41,6 +50,7 @@
     padding-inline: max(var(--gutter-desktop), calc((100vw - var(--container-max)) / 2 + var(--gutter-desktop)));
   }
   .app-nav-top { display: flex; }
+  .app-header-actions { display: flex; }
   .bottom-nav { display: none; }
   .app-main { padding-bottom: 0; }
   .page { padding: var(--space-8) var(--gutter-desktop); }
