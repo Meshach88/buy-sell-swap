@@ -2,13 +2,18 @@
 
 namespace App\Models;
 
+use Database\Factories\DeliveryZoneFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 #[Fillable(['city_id', 'name', 'areas', 'fee_kobo', 'eta_label', 'is_active'])]
 class DeliveryZone extends Model
 {
+    /** @use HasFactory<DeliveryZoneFactory> */
+    use HasFactory;
+
     protected function casts(): array
     {
         return ['areas' => 'array', 'is_active' => 'boolean'];

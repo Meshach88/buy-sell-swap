@@ -11,8 +11,9 @@ import { Icon } from '../../components/ui/core/Icon.jsx';
 import { useAuth } from '../../lib/auth.jsx';
 import { useToast } from '../../lib/toast.jsx';
 import { ApiError } from '../../lib/api.js';
+import { KADUNA_AREAS } from '../../lib/areas.js';
 
-const AREAS = ['Barnawa', 'Malali', 'Unguwan Rimi', 'Kawo', 'Sabon Tasha', 'Narayi'].map((a) => `${a}, Kaduna`);
+const AREAS = KADUNA_AREAS.map((a) => `${a}, Kaduna`);
 
 export function SignupSeller() {
   const navigate = useNavigate();

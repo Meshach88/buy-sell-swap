@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Input({ label, placeholder, value, onChange, type = 'text', hint, error, prefix, suffix, disabled = false, id }) {
+export function Input({ label, placeholder, value, onChange, onBlur, type = 'text', hint, error, prefix, suffix, disabled = false, id }) {
   const [focus, setFocus] = React.useState(false);
   const inputId = id || `in-${label || placeholder || 'field'}`.replace(/\s+/g, '-').toLowerCase();
   const borderColor = error ? 'var(--red-500)' : focus ? 'var(--border-focus)' : 'var(--border-subtle)';
@@ -11,7 +11,7 @@ export function Input({ label, placeholder, value, onChange, type = 'text', hint
         {prefix ? <span style={{ color: 'var(--text-muted)', display: 'inline-flex' }}>{prefix}</span> : null}
         <input id={inputId} type={type} value={value} placeholder={placeholder} disabled={disabled}
           onChange={(e) => onChange && onChange(e.target.value)}
-          onFocus={() => setFocus(true)} onBlur={() => setFocus(false)}
+          onFocus={() => setFocus(true)} onBlur={(e) => { setFocus(false); onBlur?.(e); }}
           style={{ flex: 1, minWidth: 0, border: 'none', outline: 'none', background: 'transparent', font: 'inherit', fontSize: 'var(--text-md)', color: 'var(--text-strong)' }} />
         {suffix ? <span style={{ color: 'var(--text-muted)', display: 'inline-flex' }}>{suffix}</span> : null}
       </span>

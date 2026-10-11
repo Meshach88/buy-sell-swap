@@ -46,6 +46,22 @@ class ListingSearchTest extends TestCase
         $this->assertSame('iPhone 12 128GB Graphite', $response->json('data.0.title'));
     }
 
+    public function test_search_also_matches_the_category_name_and_brand(): void
+    {
+        $phones = Category::factory()->create(['name' => 'Phones']);
+        $laptops = Category::factory()->create(['name' => 'Laptops']);
+        $appleModel = ProductModel::factory()->create(['category_id' => $phones->id, 'brand' => 'Apple']);
+        $hpModel = ProductModel::factory()->create(['category_id' => $laptops->id, 'brand' => 'HP']);
+
+        Listing::factory()->live()->create(['product_model_id' => $appleModel->id, 'title' => 'Some phone']);
+        Listing::factory()->live()->create(['product_model_id' => $hpModel->id, 'title' => 'Some laptop']);
+
+        $this->getJson('/api/listings?q=phones')->assertOk()->assertJsonCount(1, 'data')
+            ->assertJsonPath('data.0.title', 'Some phone');
+        $this->getJson('/api/listings?q=apple')->assertOk()->assertJsonCount(1, 'data')
+            ->assertJsonPath('data.0.title', 'Some phone');
+    }
+
     public function test_filters_by_category_condition_and_price(): void
     {
         $phones = Category::factory()->create(['slug' => 'phones']);
@@ -72,6 +88,25 @@ class ListingSearchTest extends TestCase
         Listing::factory()->live()->create(); // unverified seller
 
         $this->getJson('/api/listings?verified=1')->assertOk()->assertJsonCount(1, 'data');
+    }
+
+    public function test_condition_filter_accepts_a_comma_separated_list(): void
+    {
+        Listing::factory()->live()->create(['condition' => 'brand_new']);
+        Listing::factory()->live()->create(['condition' => 'uk_used']);
+        Listing::factory()->live()->create(['condition' => 'ng_used']);
+
+        $this->getJson('/api/listings?condition=uk_used,ng_used')->assertOk()->assertJsonCount(2, 'data');
+    }
+
+    public function test_area_filter_matches_the_sellers_area(): void
+    {
+        $barnawa = SellerProfile::factory()->create(['area' => 'Barnawa']);
+        $malali = SellerProfile::factory()->create(['area' => 'Malali']);
+        Listing::factory()->live()->create(['seller_profile_id' => $barnawa->id]);
+        Listing::factory()->live()->create(['seller_profile_id' => $malali->id]);
+
+        $this->getJson('/api/listings?area=Barnawa')->assertOk()->assertJsonCount(1, 'data');
     }
 
     public function test_show_returns_404_for_a_non_live_listing(): void
@@ -101,5 +136,15 @@ class ListingSearchTest extends TestCase
             ->assertOk()
             ->assertJsonCount(1, 'listings.data')
             ->assertJsonPath('seller.slug', $listing->seller->slug);
+    }
+
+    public function test_storefront_listings_carry_the_sellers_area(): void
+    {
+        $listing = Listing::factory()->live()->create();
+        $listing->seller->update(['area' => 'Barnawa']);
+
+        $this->getJson("/api/sellers/{$listing->seller->slug}")
+            ->assertOk()
+            ->assertJsonPath('listings.data.0.seller.area', 'Barnawa');
     }
 }

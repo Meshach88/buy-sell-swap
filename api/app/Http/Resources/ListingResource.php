@@ -18,6 +18,7 @@ class ListingResource extends JsonResource
             'condition' => $this->condition->value,
             'condition_label' => $this->condition->label(),
             'grade' => $this->grade,
+            'variant' => $this->variant,
             'battery_health' => $this->battery_health,
             'price_kobo' => $this->price_kobo,
             'price_label' => Money::format($this->price_kobo),

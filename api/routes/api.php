@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\DeliveryZoneController;
 use App\Http\Controllers\Api\HealthController;
 use App\Http\Controllers\Api\ListingController;
 use App\Http\Controllers\Api\ProductModelController;
@@ -28,6 +29,7 @@ Route::get('/product-models/{productModel:slug}', [ProductModelController::class
 Route::get('/listings', [ListingController::class, 'index']);
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 Route::get('/sellers/{sellerProfile:slug}', [SellerStorefrontController::class, 'show']);
+Route::get('/delivery-zones', [DeliveryZoneController::class, 'index']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', fn (Request $request) => new UserResource($request->user()->load('sellerProfile')));

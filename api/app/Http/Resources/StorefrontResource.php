@@ -23,6 +23,7 @@ class StorefrontResource extends JsonResource
             'rating_avg' => (float) $this->rating_avg,
             'rating_count' => $this->rating_count,
             'deals_count' => $this->deals_count,
+            'joined_at' => $this->created_at?->toIso8601String(),
         ];
     }
 }

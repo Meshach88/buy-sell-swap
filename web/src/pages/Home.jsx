@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { api } from '../lib/api.js';
 import { useAuth } from '../lib/auth.jsx';
 import { useToast } from '../lib/toast.jsx';
-import { formatRelativeTime } from '../lib/time.js';
+import { listingCardProps } from '../lib/listing.js';
 import { Icon } from '../components/ui/core/Icon.jsx';
 import { Button } from '../components/ui/core/Button.jsx';
 import { SearchBar } from '../components/ui/forms/SearchBar.jsx';
@@ -12,29 +12,16 @@ import { CategoryPill } from '../components/ui/marketplace/CategoryPill.jsx';
 import { ListingCard } from '../components/ui/marketplace/ListingCard.jsx';
 import { Tabs } from '../components/ui/navigation/Tabs.jsx';
 import { EmptyState } from '../components/ui/feedback/EmptyState.jsx';
+import { MarketplaceFooter } from '../components/marketplace/MarketplaceFooter.jsx';
 import heroImg from '../assets/phone-in-hand-blue.jpg';
 import sellerImg from '../assets/phones-trio-lemon.jpg';
 import './Home.css';
 
-const QUICK_SEARCHES = ['iPhone 13 Pro', 'MacBook Air M2', 'PS5 slim', 'Galaxy S24'];
 const FILTER_TABS = [
   { id: 'newest', label: 'Newest' },
   { id: 'verified', label: 'Verified' },
   { id: 'swap', label: 'Open to swap' },
 ];
-
-function listingCardProps(l) {
-  return {
-    title: l.title,
-    priceKobo: l.price_kobo,
-    wasKobo: l.was_price_kobo,
-    condition: l.condition,
-    image: l.primary_image_url,
-    location: l.seller?.area,
-    postedAt: formatRelativeTime(l.published_at),
-    openToSwap: l.open_to_swap,
-  };
-}
 
 function ProofCard() {
   return (
@@ -80,9 +67,26 @@ export function Home() {
   const { data: swapBody } = useQuery({ queryKey: ['home-swap-teaser'], queryFn: () => api('/listings?open_to_swap=1') });
   const swapListings = (swapBody?.data ?? []).slice(0, 2);
 
+  // Quick-search chips: the newest distinct product models across the whole
+  // catalogue (not just the active category), so every chip is guaranteed to
+  // match something — unlike a hardcoded list, this can't drift out of sync.
+  const { data: catalogBody } = useQuery({ queryKey: ['home-quick-searches'], queryFn: () => api('/listings') });
+  const quickSearches = React.useMemo(() => {
+    const seen = new Set();
+    const terms = [];
+    for (const l of catalogBody?.data ?? []) {
+      const pm = l.product_model;
+      if (!pm || seen.has(pm.id)) continue;
+      seen.add(pm.id);
+      terms.push(`${pm.brand} ${pm.name}`);
+      if (terms.length === 4) break;
+    }
+    return terms;
+  }, [catalogBody]);
+
   function onSearchSubmit(term) {
     if (!term?.trim()) return;
-    toast.show(`Search for "${term}" is coming with the full search page.`);
+    navigate(`/search?q=${encodeURIComponent(term)}`);
   }
 
   function notYet(label) {
@@ -107,16 +111,18 @@ export function Home() {
             <div className="anim-fade-up" style={{ '--stagger-i': 3, maxWidth: 560, width: '100%' }}>
               <SearchBar size="lg" value={search} onChange={setSearch} onSubmit={onSearchSubmit} />
             </div>
-            <div className="anim-fade-up" style={{ '--stagger-i': 4, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-              {QUICK_SEARCHES.map((q) => (
-                <button key={q} type="button" onClick={() => onSearchSubmit(q)}
-                  style={{ all: 'unset', cursor: 'pointer', fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,.82)', border: '1px solid rgba(255,255,255,.22)', borderRadius: 999, padding: '6px 14px', transition: 'var(--transition-control)' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,.5)'; e.currentTarget.style.color = '#fff'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,.22)'; e.currentTarget.style.color = 'rgba(255,255,255,.82)'; }}>
-                  {q}
-                </button>
-              ))}
-            </div>
+            {quickSearches.length ? (
+              <div className="anim-fade-up" style={{ '--stagger-i': 4, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                {quickSearches.map((q) => (
+                  <button key={q} type="button" onClick={() => onSearchSubmit(q)}
+                    style={{ all: 'unset', cursor: 'pointer', fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,.82)', border: '1px solid rgba(255,255,255,.22)', borderRadius: 999, padding: '6px 14px', transition: 'var(--transition-control)' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,.5)'; e.currentTarget.style.color = '#fff'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,.22)'; e.currentTarget.style.color = 'rgba(255,255,255,.82)'; }}>
+                    {q}
+                  </button>
+                ))}
+              </div>
+            ) : null}
           </div>
 
           <div className="anim-fade-scale home-hero-image-wrap">
@@ -156,7 +162,7 @@ export function Home() {
           ) : listings.length ? (
             <div className="home-listings-grid">
               {listings.slice(0, 8).map((l) => (
-                <ListingCard key={l.id} {...listingCardProps(l)} onClick={() => notYet('The listing page')} onSave={() => notYet('Saving listings')} />
+                <ListingCard key={l.id} {...listingCardProps(l)} onClick={() => navigate(`/listings/${l.id}`)} onSave={() => notYet('Saving listings')} />
               ))}
             </div>
           ) : (
@@ -164,7 +170,8 @@ export function Home() {
           )}
 
           <div style={{ alignSelf: 'center' }}>
-            <Button variant="secondary" iconRight={<Icon name="arrow-right" size={18} />} onClick={() => notYet('The full listings page')}>
+            <Button variant="secondary" iconRight={<Icon name="arrow-right" size={18} />}
+              onClick={() => navigate(`/search${effectiveCategoryId ? `?category_id=${effectiveCategoryId}` : ''}`)}>
               See all {totalListings} listings
             </Button>
           </div>
@@ -180,12 +187,12 @@ export function Home() {
               <h2 className="home-swap-heading" style={{ letterSpacing: '-0.035em', lineHeight: 1.05 }}>Some sellers will take a trade. Look for the swap flag.</h2>
               <p style={{ fontSize: 15, maxWidth: 460 }}>Filter the feed for sellers open to swapping. You can buy the device outright today, and swap requests are coming to BuySellSwap next.</p>
               <div>
-                <Button variant="inverse" icon={<Icon name="repeat-2" size={18} />} onClick={() => setFilter('swap')}>Browse open-to-swap listings</Button>
+                <Button variant="inverse" icon={<Icon name="repeat-2" size={18} />} onClick={() => navigate('/search?swap=1')}>Browse open-to-swap listings</Button>
               </div>
             </div>
             <div className="home-listings-grid" style={{ gridTemplateColumns: 'repeat(2, minmax(0,1fr))' }}>
               {swapListings.map((l) => (
-                <ListingCard key={l.id} {...listingCardProps(l)} onClick={() => notYet('The listing page')} onSave={() => notYet('Saving listings')} />
+                <ListingCard key={l.id} {...listingCardProps(l)} onClick={() => navigate(`/listings/${l.id}`)} onSave={() => notYet('Saving listings')} />
               ))}
             </div>
           </div>
@@ -247,30 +254,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{ background: 'var(--surface-inverse)', color: 'rgba(255,255,255,.72)', padding: '48px 0 32px' }}>
-        <div className="home-container home-footer-grid">
-          <div className="home-footer-col">
-            <div style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.04em', color: '#fff' }}>BuySellSwap</div>
-            <p style={{ fontSize: 13, maxWidth: 240 }}>Kaduna's gadget marketplace. Buy verified devices, sell the one in your drawer, swap when a seller is open to it.</p>
-          </div>
-          {[
-            ['MARKETPLACE', ['Phones', 'Laptops', 'Consoles', 'Audio', 'Accessories']],
-            ['SELLING', ['Start selling', 'Seller guide', 'Fees and payouts', 'Seller verification']],
-            ['TRUST', ['Payment protection', 'Verified devices', 'IMEI check', 'Returns and refunds']],
-            ['COMPANY', ['About', 'Contact', 'Terms', 'Privacy']],
-          ].map(([heading, links]) => (
-            <div key={heading} className="home-footer-col">
-              <div style={{ fontSize: 11, letterSpacing: '.14em', fontWeight: 700, color: 'var(--lemon-300)' }}>{heading}</div>
-              {links.map((l) => <span key={l} style={{ fontSize: 13 }}>{l}</span>)}
-            </div>
-          ))}
-        </div>
-        <div className="home-container" style={{ marginTop: 32, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,.1)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, fontSize: 12 }}>
-          <span>© {new Date().getFullYear()} BuySellSwap, a SMARTiFy company. Kaduna, Nigeria.</span>
-          <span style={{ display: 'flex', gap: 18 }}><span>Terms</span><span>Privacy</span></span>
-        </div>
-      </footer>
+      <MarketplaceFooter />
     </>
   );
 }

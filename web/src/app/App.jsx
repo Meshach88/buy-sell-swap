@@ -2,6 +2,9 @@ import React from 'react';
 import { Route, Routes, Outlet } from 'react-router-dom';
 import { Shell } from './Shell.jsx';
 import { Home } from '../pages/Home.jsx';
+import { ListingDetail } from '../pages/ListingDetail.jsx';
+import { SearchPage } from '../pages/SearchPage.jsx';
+import { StorefrontPage } from '../pages/StorefrontPage.jsx';
 import { DesignSystem } from '../pages/DesignSystem.jsx';
 import { ComingSoon } from '../pages/ComingSoon.jsx';
 import { SignupRole } from '../pages/auth/SignupRole.jsx';
@@ -34,6 +37,9 @@ export function App() {
           <Route path="signup/seller" element={<SignupSeller />} />
           <Route path="verify" element={<VerifyOtp />} />
         </Route>
+        <Route path="listings/:id" element={<ListingDetail />} />
+        <Route path="search" element={<SearchPage />} />
+        <Route path="sellers/:slug" element={<StorefrontPage />} />
         <Route path="design" element={<DesignSystem />} />
         <Route path="*" element={<ComingSoon />} />
       </Route>

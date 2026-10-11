@@ -1,4 +1,5 @@
 import React from 'react';
+import { Spinner } from '../feedback/Spinner.jsx';
 
 const PAD = { sm: '0 14px', md: '0 20px', lg: '0 28px' };
 const HEIGHT = { sm: 34, md: 44, lg: 54 };
@@ -22,16 +23,6 @@ function skin(variant, state) {
     default:
       return {};
   }
-}
-
-function Spinner({ size = 16, color = 'currentColor' }) {
-  return (
-    <span style={{
-      width: size, height: size, borderRadius: '50%', flex: '0 0 auto',
-      border: `2px solid ${color}`, borderTopColor: 'transparent', opacity: 0.9,
-      animation: 'spin .6s linear infinite',
-    }} />
-  );
 }
 
 export function Button({ variant = 'primary', size = 'md', children, icon, iconRight, fullWidth = false, disabled = false, loading = false, type = 'button', onClick }) {

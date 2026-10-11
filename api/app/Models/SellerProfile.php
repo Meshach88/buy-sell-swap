@@ -57,6 +57,11 @@ class SellerProfile extends Model
         return $this->hasMany(Listing::class);
     }
 
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
     public function isApproved(): bool
     {
         return $this->kyc_status === KycStatus::Approved;
