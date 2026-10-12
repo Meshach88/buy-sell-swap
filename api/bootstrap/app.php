@@ -1,5 +1,6 @@
 <?php
 
+use App\Exceptions\PaystackException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -26,4 +27,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );
+
+        // Paystack being unreachable/misconfigured is an upstream problem, not ours —
+        // worth a clean 502 everywhere rather than a 500 with a stack trace in prod.
+        $exceptions->render(fn (PaystackException $e) => response()->json([
+            'message' => 'We couldn\'t reach the payment provider. Please try again shortly.',
+        ], 502));
     })->create();

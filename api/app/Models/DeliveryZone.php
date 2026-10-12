@@ -23,4 +23,17 @@ class DeliveryZone extends Model
     {
         return $this->belongsTo(City::class);
     }
+
+    /** The active zone whose `areas` list contains this area name, if any. */
+    public static function matching(?int $cityId, string $area): ?self
+    {
+        if ($cityId === null) {
+            return null;
+        }
+
+        return static::where('city_id', $cityId)
+            ->where('is_active', true)
+            ->whereJsonContains('areas', $area)
+            ->first();
+    }
 }
