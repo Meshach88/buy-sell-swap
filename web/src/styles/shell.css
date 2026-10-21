@@ -23,6 +23,18 @@
 .app-header-loginlink:hover { background: var(--ink-100); }
 .app-header-greeting { font-size: 13px; font-weight: 600; color: var(--text-body); white-space: nowrap; }
 
+.app-header-cart {
+  all: unset; position: relative; cursor: pointer; width: 40px; height: 40px;
+  display: inline-grid; place-items: center; border-radius: var(--radius-pill); color: var(--text-body);
+  transition: var(--transition-control);
+}
+.app-header-cart:hover { background: var(--ink-100); }
+.app-header-cart-badge {
+  position: absolute; top: -2px; right: -2px; min-width: 18px; height: 18px; padding: 0 5px;
+  display: grid; place-items: center; background: var(--brand-accent); color: var(--ink-950);
+  font-size: 11px; font-weight: 700; border-radius: var(--radius-pill); border: 2px solid var(--surface-card);
+}
+
 .app-main { flex: 1; padding-bottom: 88px; }
 .page { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: var(--space-6) var(--gutter-mobile); }
 

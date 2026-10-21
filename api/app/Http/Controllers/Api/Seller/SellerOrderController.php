@@ -41,17 +41,19 @@ class SellerOrderController extends Controller
         return $this->advance($request, $sellerOrder, SellerOrderStatus::Accepted, ['accepted_at' => now()]);
     }
 
+    // The handover code is generated here, not in handToRider() — the seller needs to already
+    // know it before the rider arrives, so they can read it out at collection time.
     public function pack(Request $request, SellerOrder $sellerOrder): SellerOrderResource
     {
-        return $this->advance($request, $sellerOrder, SellerOrderStatus::Packed, ['packed_at' => now()]);
+        return $this->advance($request, $sellerOrder, SellerOrderStatus::Packed, [
+            'packed_at' => now(),
+            'handover_code' => $sellerOrder->handover_code ?? strtoupper(Str::random(6)),
+        ]);
     }
 
     public function handToRider(Request $request, SellerOrder $sellerOrder): SellerOrderResource
     {
-        return $this->advance($request, $sellerOrder, SellerOrderStatus::WithRider, [
-            'handed_over_at' => now(),
-            'handover_code' => $sellerOrder->handover_code ?? strtoupper(Str::random(6)),
-        ]);
+        return $this->advance($request, $sellerOrder, SellerOrderStatus::WithRider, ['handed_over_at' => now()]);
     }
 
     public function markDelivered(Request $request, SellerOrder $sellerOrder): SellerOrderResource

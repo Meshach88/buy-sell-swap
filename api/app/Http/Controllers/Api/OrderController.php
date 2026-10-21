@@ -18,7 +18,7 @@ class OrderController extends Controller
     public function index(Request $request): AnonymousResourceCollection
     {
         $orders = $request->user()->orders()
-            ->with(['items.listing.images', 'sellerOrders.seller', 'payments'])
+            ->with(['items.listing.images', 'sellerOrders.seller', 'sellerOrders.items.listing.images', 'payments'])
             ->latest()
             ->paginate(10);
 

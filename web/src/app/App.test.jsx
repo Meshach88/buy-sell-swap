@@ -44,7 +44,7 @@ describe('App', () => {
   });
 
   it('shows a placeholder for pages that are not built yet', () => {
-    renderAt('/orders');
+    renderAt('/safety');
     expect(screen.getByText('Not built yet')).toBeInTheDocument();
   });
 });

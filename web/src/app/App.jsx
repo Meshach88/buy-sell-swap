@@ -1,10 +1,18 @@
 import React from 'react';
-import { Route, Routes, Outlet } from 'react-router-dom';
+import { Route, Routes, Outlet, Navigate } from 'react-router-dom';
 import { Shell } from './Shell.jsx';
+import { SellerShell } from '../components/seller/SellerShell.jsx';
+import { SellerOrdersPage } from '../pages/seller/SellerOrdersPage.jsx';
+import { SellerOrderDetailPage } from '../pages/seller/SellerOrderDetailPage.jsx';
 import { Home } from '../pages/Home.jsx';
 import { ListingDetail } from '../pages/ListingDetail.jsx';
 import { SearchPage } from '../pages/SearchPage.jsx';
 import { StorefrontPage } from '../pages/StorefrontPage.jsx';
+import { CartPage } from '../pages/CartPage.jsx';
+import { CheckoutPage } from '../pages/CheckoutPage.jsx';
+import { OrdersPage } from '../pages/OrdersPage.jsx';
+import { OrderTrackPage } from '../pages/OrderTrackPage.jsx';
+import { PaystackCallbackPage } from '../pages/PaystackCallbackPage.jsx';
 import { DesignSystem } from '../pages/DesignSystem.jsx';
 import { ComingSoon } from '../pages/ComingSoon.jsx';
 import { SignupRole } from '../pages/auth/SignupRole.jsx';
@@ -40,7 +48,19 @@ export function App() {
         <Route path="listings/:id" element={<ListingDetail />} />
         <Route path="search" element={<SearchPage />} />
         <Route path="sellers/:slug" element={<StorefrontPage />} />
+        <Route path="cart" element={<CartPage />} />
+        <Route path="checkout" element={<CheckoutPage />} />
+        <Route path="orders" element={<OrdersPage />} />
+        <Route path="orders/paystack-callback" element={<PaystackCallbackPage />} />
+        <Route path="orders/:id" element={<OrderTrackPage />} />
         <Route path="design" element={<DesignSystem />} />
+        <Route path="*" element={<ComingSoon />} />
+      </Route>
+
+      <Route path="sell" element={<SellerShell />}>
+        <Route index element={<Navigate to="orders" replace />} />
+        <Route path="orders" element={<SellerOrdersPage />} />
+        <Route path="orders/:id" element={<SellerOrderDetailPage />} />
         <Route path="*" element={<ComingSoon />} />
       </Route>
     </Routes>

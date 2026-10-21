@@ -2,6 +2,8 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api.js';
+import { useAuth } from '../lib/auth.jsx';
+import { useAddToCart } from '../lib/cart.js';
 import { useToast } from '../lib/toast.jsx';
 import { formatRelativeTime } from '../lib/time.js';
 import { formatNaira } from '../lib/money.js';
@@ -46,7 +48,9 @@ function TrustRow({ icon, title, body, tone = 'brand' }) {
 export function ListingDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const toast = useToast();
+  const addToCart = useAddToCart();
   const [activeImage, setActiveImage] = React.useState(0);
 
   const { data: body, isPending, isError } = useQuery({
@@ -68,6 +72,26 @@ export function ListingDetail() {
 
   function notYet(label) {
     toast.show(`${label} is coming soon.`);
+  }
+
+  async function handleAddToCart() {
+    if (!user) return navigate('/login');
+    try {
+      await addToCart.mutateAsync({ listingId: listing.id, quantity: 1 });
+      toast.success('Added to cart.');
+    } catch (err) {
+      toast.error(err.message ?? 'Could not add that to your cart.');
+    }
+  }
+
+  async function handleBuyNow() {
+    if (!user) return navigate('/login');
+    try {
+      await addToCart.mutateAsync({ listingId: listing.id, quantity: 1 });
+      navigate('/checkout');
+    } catch (err) {
+      toast.error(err.message ?? 'Could not start checkout.');
+    }
   }
 
   if (isPending) {
@@ -152,10 +176,10 @@ export function ListingDetail() {
                 <PriceTag kobo={listing.price_kobo} wasKobo={listing.was_price_kobo} size="xl" />
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  <Button fullWidth size="lg" onClick={() => notYet('Checkout')}>Buy now</Button>
+                  <Button fullWidth size="lg" loading={addToCart.isPending} onClick={handleBuyNow}>Buy now</Button>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <div style={{ flex: 1 }}>
-                      <Button fullWidth size="lg" variant="secondary" icon={<Icon name="shopping-bag" size={18} />} onClick={() => notYet('The cart')}>Add to cart</Button>
+                      <Button fullWidth size="lg" variant="secondary" icon={<Icon name="shopping-bag" size={18} />} loading={addToCart.isPending} onClick={handleAddToCart}>Add to cart</Button>
                     </div>
                     <button type="button" aria-label="Save" onClick={() => notYet('Saving listings')}
                       style={{ width: 48, height: 48, flex: '0 0 auto', display: 'inline-grid', placeItems: 'center', borderRadius: 999, background: '#fff', border: '1px solid var(--border-subtle)', cursor: 'pointer', color: 'var(--text-body)' }}>

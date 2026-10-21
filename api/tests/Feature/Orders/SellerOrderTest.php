@@ -95,4 +95,28 @@ class SellerOrderTest extends TestCase
 
         $this->getJson('/api/seller/orders')->assertForbidden();
     }
+
+    public function test_the_seller_sees_a_privacy_safe_buyer_name_never_the_phone_or_street(): void
+    {
+        $seller = $this->seller();
+        Sanctum::actingAs($seller);
+        $order = Order::factory()->create([
+            'status' => 'paid', 'delivery_name' => 'Hauwa Bello', 'delivery_phone' => '08011112222',
+            'delivery_street' => '12 Secret Close', 'delivery_area' => 'Barnawa',
+        ]);
+        $listing = Listing::factory()->live()->create(['seller_profile_id' => $seller->sellerProfile->id]);
+        $sellerOrder = SellerOrder::create(['order_id' => $order->id, 'seller_profile_id' => $seller->sellerProfile->id, 'subtotal_kobo' => 100_000]);
+        OrderItem::create([
+            'order_id' => $order->id, 'seller_order_id' => $sellerOrder->id, 'listing_id' => $listing->id,
+            'seller_profile_id' => $seller->sellerProfile->id, 'title' => $listing->title,
+            'unit_price_kobo' => 100_000, 'quantity' => 1, 'total_kobo' => 100_000,
+        ]);
+
+        $response = $this->getJson("/api/seller/orders/{$sellerOrder->id}")->assertOk();
+
+        $response->assertJsonPath('data.buyer_name', 'Hauwa B.');
+        $response->assertJsonPath('data.delivery_area', 'Barnawa');
+        $this->assertStringNotContainsString('08011112222', $response->getContent());
+        $this->assertStringNotContainsString('Secret Close', $response->getContent());
+    }
 }

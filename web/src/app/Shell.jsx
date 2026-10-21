@@ -4,14 +4,15 @@ import { Icon } from '../components/ui/core/Icon.jsx';
 import { Button } from '../components/ui/core/Button.jsx';
 import { useAuth } from '../lib/auth.jsx';
 import { useToast } from '../lib/toast.jsx';
-
-const TOP = [['Buy', '/'], ['Sell', '/sell'], ['Swap', '/swap'], ['Safety', '/safety'], ['Help', '/help']];
+import { useCart } from '../lib/cart.js';
 
 export function Shell() {
   const { user, logout } = useAuth();
   const toast = useToast();
   const navigate = useNavigate();
   const isSeller = user?.roles?.includes('seller');
+  const { data: cartBody } = useCart();
+  const cartCount = (cartBody?.items ?? []).reduce((sum, item) => sum + item.quantity, 0);
 
   const TABS = [
     { to: '/', label: 'Home', icon: 'house', end: true },
@@ -32,9 +33,15 @@ export function Shell() {
       <header className="app-header">
         <NavLink to="/" className="app-wordmark" end>BuySellSwap</NavLink>
         <nav className="app-nav-top" aria-label="Main">
-          {TOP.map(([label, to]) => <NavLink key={label} to={to} end={to === '/'}>{label}</NavLink>)}
+          {TABS.map((t) => <NavLink key={t.to} to={t.to} end={t.end}>{t.label}</NavLink>)}
         </nav>
         <div className="app-header-actions">
+          {user ? (
+            <button type="button" aria-label="Cart" className="app-header-cart" onClick={() => navigate('/cart')}>
+              <Icon name="shopping-cart" size={18} />
+              {cartCount > 0 ? <span className="app-header-cart-badge">{cartCount}</span> : null}
+            </button>
+          ) : null}
           {user ? (
             <>
               <span className="app-header-greeting">Hi, {user.name.split(' ')[0]}</span>
