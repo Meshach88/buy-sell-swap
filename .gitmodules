@@ -1,0 +1,8 @@
+[submodule "api"]
+	path = api
+	url = https://github.com/Meshach88/buy-sell-swap-api.git
+	branch = main
+[submodule "web"]
+	path = web
+	url = https://github.com/Meshach88/buy-sell-swap-web.git
+	branch = main
